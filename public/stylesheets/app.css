@@ -1,0 +1,22 @@
+.img-thumbnail img {
+    width: 100%;
+}
+
+.delete {
+    display: inline;
+}
+
+.img-thumbnail {
+    padding: 0;
+}
+
+.card {
+    margin: 5px;
+}
+
+.card img {
+    width: 100%;
+}
+.img-thumbnail .caption-full {
+    padding: 9px;
+}
