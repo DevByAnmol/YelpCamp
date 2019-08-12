@@ -9,12 +9,24 @@ var express       = require('express'),
     User          = require("./models/users");
     //seedDB        = require("./seeds");
 
+// configure dotenv
+require('dotenv').config();
+
 var campgroundRoutes = require("./routes/campgrounds"),
     commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index");
 
 // Application Configuration
-mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true});
+
+/// assign mongoose promise library and connect to database
+mongoose.Promise = global.Promise;
+
+const databaseUri = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp';
+
+mongoose.connect(databaseUri, { useMongoClient: true })
+      .then(() => console.log(`Database connected`))
+      .catch(err => console.log(`Database connection error: ${err.message}`));
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodeOverride("_method"));
