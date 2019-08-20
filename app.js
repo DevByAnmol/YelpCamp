@@ -61,12 +61,12 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/", indexRoutes);
 
 // For Deployment
-// app.listen(process.env.PORT, process.env.IP,function(){
-//     console.log("The YelpCamp Server has started!!");
-// });
+app.listen(process.env.PORT, process.env.IP,function(){
+    console.log("The YelpCamp Server has started!!");
+});
 
 // For Local Development
 
-app.listen("3000", function(){
-    console.log("The YelpCamp Server has started!!");
-});
+// app.listen("3000", function(){
+//     console.log("The YelpCamp Server has started!!");
+// });
