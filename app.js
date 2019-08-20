@@ -23,7 +23,7 @@ mongoose.Promise = global.Promise;
 
 const databaseUri = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp';
 
-mongoose.connect(databaseUri, { useMongoClient: true })
+mongoose.connect(databaseUri, { useNewUrlParser: true })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
 
@@ -61,12 +61,12 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/", indexRoutes);
 
 // For Deployment
-app.listen(process.env.PORT, process.env.IP,function(){
-    console.log("The YelpCamp Server has started!!");
-});
+// app.listen(process.env.PORT, process.env.IP,function(){
+//     console.log("The YelpCamp Server has started!!");
+// });
 
 // For Local Development
 
-// app.listen("3000", function(){
-//     console.log("The YelpCamp Server has started!!");
-// });
+app.listen("3000", function(){
+    console.log("The YelpCamp Server has started!!");
+});
